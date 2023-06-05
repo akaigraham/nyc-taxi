@@ -1,4 +1,4 @@
 .prefect/
 models/
 __pycache__/
-*.pyc
+scripts/__pycache__/orchestrate.cpython-311.pyc
