@@ -16,10 +16,10 @@ def create_aws_creds_block():
 def create_s3_bucket_block():
     aws_creds = AwsCredentials.load('my-aws-creds')
     my_s3_bucket_obj = S3Bucket(
-        bucket_name='already-created-bucket-name',
+        bucket_name='akg-prefect-bucket',
         credentials=aws_creds
     )
-    my_s3_bucket_obj.save(name="s3-bucket-esample", overwrite=True)
+    my_s3_bucket_obj.save(name="nyc-taxi-s3-bucket", overwrite=True)
     
 if __name__ == '__main__':
     create_aws_creds_block()
