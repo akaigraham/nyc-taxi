@@ -121,10 +121,8 @@ def master_flow(
     mlflow.set_experiment("nyc-taxi")
 
     # Load
-    train_file = pathlib.Path('./data/'+train_path)
-    val_file = pathlib.Path('./data/'+val_path)
-    df_train = read_data(train_file)
-    df_val = read_data(val_file)
+    df_train = read_data(train_path)
+    df_val = read_data(val_path)
 
     # Transform
     X_train, X_val, y_train, y_val, dv = add_features(df_train, df_val)
