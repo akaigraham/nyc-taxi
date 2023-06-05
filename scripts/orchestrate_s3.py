@@ -9,6 +9,7 @@ from sklearn.metrics import mean_squared_error
 import mlflow
 import xgboost as xgb
 from prefect import flow, task
+from prefect_aws import S3Bucket
 
 
 @task(retries=3, retry_delay_seconds=2)
@@ -121,6 +122,9 @@ def master_flow(
     mlflow.set_experiment("nyc-taxi")
 
     # Load
+    s3_bucket_block = S3Bucket.load(name='nyc-taxi-s3-bucket')
+    s3_bucket_block.download_folder_to_path(from_folder='data', to_folder='data')
+    
     df_train = read_data(train_path)
     df_val = read_data(val_path)
 
